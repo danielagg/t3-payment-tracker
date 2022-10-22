@@ -20,13 +20,13 @@ export const CreateNewPayment = () => {
 
   return (
     <form className="flex w-full flex-col items-center justify-center space-y-2 rounded bg-slate-700 p-12">
-      <div className="text-4xl font-bold">Capture new transaction</div>
+      <div className="text-3xl font-bold">Capture a new transaction</div>
 
-      <div className="w-2/3">
+      <div className="w-full">
         <div className="flex flex-col">
           <label
             htmlFor="amount"
-            className="mt-4 mb-2 uppercase text-slate-500"
+            className="mt-4 mb-2 text-sm uppercase text-slate-500"
           >
             Amount (USD)
           </label>
@@ -42,7 +42,7 @@ export const CreateNewPayment = () => {
         <div className="flex flex-col">
           <label
             htmlFor="description"
-            className="mt-8 mb-2 uppercase text-slate-500"
+            className="mt-8 mb-2 text-sm uppercase text-slate-500"
           >
             Description
           </label>

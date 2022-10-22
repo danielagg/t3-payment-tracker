@@ -18,11 +18,13 @@ export const Payments = () => {
   return (
     <div>
       <div className="flex items-start justify-between space-x-2">
-        <div className="text-4xl font-bold">Your payments</div>
+        <div className="text-3xl font-bold">Transaction History</div>
 
         {data != null && data.length > 0 && (
-          <div className="flex flex-col items-end py-4">
-            <div className="uppercase text-slate-500">Your total balance</div>
+          <div className="flex flex-col items-end">
+            <div className="text-sm uppercase text-slate-500">
+              Total Balance
+            </div>
             <div className="text-3xl">
               {getTotalBalance() < 0 ? "- $" : "$"}
               {Math.abs(getTotalBalance())}
@@ -31,15 +33,15 @@ export const Payments = () => {
         )}
       </div>
       {isLoading && (
-        <div className="mt-8 text-xl text-slate-500">Loading data...</div>
+        <div className="mt-12 text-xl text-slate-500">Loading data...</div>
       )}
 
       {data == null || data.length === 0 ? (
-        <div className="mt-8 text-xl text-slate-500">
+        <div className="mt-12 text-xl text-slate-500">
           No transactions were captured, yet.
         </div>
       ) : (
-        <div className="flex flex-col space-y-4 divide-y-2 divide-gray-600">
+        <div className="mt-4 flex flex-col space-y-4 divide-y-2 divide-gray-600">
           {data.map((d) => {
             return (
               <div key={d.id} className="flex justify-between pt-4">

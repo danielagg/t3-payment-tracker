@@ -17,8 +17,8 @@ const Home: NextPage = () => {
 
       <main className="flex min-h-screen justify-center bg-zinc-900 pt-16 text-zinc-200">
         <div className="w-2/3">
-          <div className="text-6xl font-bold">Payment Tracker</div>
-          <div className="mt-24 flex w-full justify-between space-x-12">
+          <div className="text-5xl font-bold">Payment Tracker</div>
+          <div className="mt-24 flex w-full justify-between space-x-24">
             <div className="w-1/2">
               <Payments />
             </div>
