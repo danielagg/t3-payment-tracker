@@ -3,7 +3,7 @@ import { trpc } from "../utils/trpc";
 
 export const CreateNewPayment = () => {
   const [description, setDescription] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState(100);
   const [isExpense, setIsExpense] = useState(true);
 
   const { refetch } = trpc.payments.getAll.useQuery();
@@ -52,20 +52,35 @@ export const CreateNewPayment = () => {
             id="description"
             value={description}
             onChange={(e) => setDescription(e.currentTarget.value)}
-            className="bg-zinc-900 p-4 text-slate-400"
+            className="min-h-[120px] bg-zinc-900 p-4 text-slate-400"
             rows={6}
           />
           <div className="mt-4 flex items-center space-x-2">
-            <input
-              id="isExpense"
-              type="checkbox"
-              checked={isExpense}
-              onChange={() => setIsExpense(!isExpense)}
-              className="h-4 w-4 rounded"
-            />
-            <label htmlFor="isExpense" className="text-slate-400">
-              This is an expense.
-            </label>
+            <div className="flex flex-col space-y-2">
+              <div className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  id="expense"
+                  name="transaction_type"
+                  className="accent-red-600"
+                  checked={isExpense}
+                  onChange={() => setIsExpense(!isExpense)}
+                />
+                <label htmlFor="expense">Expense</label>
+              </div>
+
+              <div className="flex items-center space-x-2">
+                <input
+                  type="radio"
+                  id="gain"
+                  name="transaction_type"
+                  className="accent-green-600"
+                  checked={!isExpense}
+                  onChange={() => setIsExpense(!isExpense)}
+                />
+                <label htmlFor="gain">Profit/Gain</label>
+              </div>
+            </div>
           </div>
         </div>
 

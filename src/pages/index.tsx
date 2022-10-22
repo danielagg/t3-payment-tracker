@@ -14,7 +14,7 @@ const Home: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex min-h-screen justify-center bg-zinc-900 text-zinc-200 lg:p-16">
+      <main className="flex min-h-screen justify-center bg-zinc-900 text-zinc-200 lg:px-16 lg:pt-16">
         <div className="w-full lg:w-2/3">
           <div className="mt-10 text-center text-4xl font-bold lg:mt-0 lg:text-left lg:text-5xl">
             Payment Tracker
@@ -26,6 +26,19 @@ const Home: NextPage = () => {
             <div className="w-full lg:w-1/2">
               <CreateNewPayment />
             </div>
+          </div>
+          <div className="mt-12 flex flex-col items-center py-4">
+            <p className="block w-32 text-xs">
+              &copy; Daniel Agg, {new Date().getFullYear()}.
+            </p>
+            <p className="mt-1 text-[11px]">
+              <a
+                href="https://danielagg.com/"
+                className="cursor-pointer underline opacity-50 hover:opacity-100"
+              >
+                danielagg.com
+              </a>
+            </p>
           </div>
         </div>
       </main>
