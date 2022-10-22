@@ -1,7 +1,7 @@
 import { trpc } from "../utils/trpc";
 
 export const Payments = () => {
-  const { data, refetch } = trpc.payments.getAll.useQuery();
+  const { data, isLoading, refetch } = trpc.payments.getAll.useQuery();
 
   const { mutate: deleteTransaction } = trpc.payments.delete.useMutation({
     onSuccess: () => {
@@ -30,6 +30,10 @@ export const Payments = () => {
           </div>
         )}
       </div>
+      {isLoading && (
+        <div className="mt-8 text-xl text-slate-500">Loading data...</div>
+      )}
+
       {data == null || data.length === 0 ? (
         <div className="mt-8 text-xl text-slate-500">
           No transactions were captured, yet.
@@ -51,10 +55,12 @@ export const Payments = () => {
                     <span>{d.amount < 0 ? "-" : "+"}</span> $
                     {Math.abs(d.amount)}
                   </div>
-                  <div className="mt-2 text-slate-500">
-                    <span className="font-bold">Description:</span>{" "}
-                    {d.description}
-                  </div>
+                  {d.description && (
+                    <div className="mt-2 text-slate-500">
+                      <span className="font-bold">Description:</span>{" "}
+                      {d.description}
+                    </div>
+                  )}
                 </div>
                 <div
                   className="cursor-pointer text-red-400 hover:text-red-300"
