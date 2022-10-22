@@ -18,14 +18,14 @@ export const Payments = () => {
   return (
     <div>
       <div className="flex items-start justify-between space-x-2">
-        <div className="text-3xl font-bold">Transaction History</div>
+        <div className="text-xl font-bold lg:text-3xl">Transaction History</div>
 
         {data != null && data.length > 0 && (
           <div className="flex flex-col items-end">
-            <div className="text-sm uppercase text-slate-500">
+            <div className="text-xs uppercase text-slate-500 lg:text-sm">
               Total Balance
             </div>
-            <div className="text-3xl">
+            <div className="text-xl lg:text-3xl">
               {getTotalBalance() < 0 ? "- $" : "$"}
               {Math.abs(getTotalBalance())}
             </div>
@@ -36,8 +36,8 @@ export const Payments = () => {
         <div className="mt-12 text-xl text-slate-500">Loading data...</div>
       )}
 
-      {data == null || data.length === 0 ? (
-        <div className="mt-12 text-xl text-slate-500">
+      {isLoading || data == null || data.length === 0 ? (
+        <div className="mt-4 text-sm text-slate-500 lg:mt-12 lg:text-xl">
           No transactions were captured, yet.
         </div>
       ) : (
@@ -46,9 +46,6 @@ export const Payments = () => {
             return (
               <div key={d.id} className="flex justify-between pt-4">
                 <div>
-                  <div className="text-slate-500">
-                    Captured @ {d.createdAt.toLocaleString()}
-                  </div>
                   <div
                     className={`text-xl font-bold ${
                       d.amount < 0 ? "text-red-300" : "text-green-300"
@@ -57,8 +54,11 @@ export const Payments = () => {
                     <span>{d.amount < 0 ? "-" : "+"}</span> $
                     {Math.abs(d.amount)}
                   </div>
+                  <div className="mt-2 text-sm text-slate-500">
+                    Captured @ {d.createdAt.toLocaleString()}
+                  </div>
                   {d.description && (
-                    <div className="mt-2 text-slate-500">
+                    <div className="text-sm text-slate-500">
                       <span className="font-bold">Description:</span>{" "}
                       {d.description}
                     </div>
